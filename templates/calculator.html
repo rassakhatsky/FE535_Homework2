@@ -1,0 +1,55 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Implied volatility calculator</h1>
+    <form action="" method="post" name="calculator">
+        {{ form.hidden_tag() }}
+        <p>
+            Days in Year:
+            {% for subfield in form.daysYear %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+            {% endfor %}
+        </p>
+
+        <p>
+            Option type:
+            {% for subfield in form.optionType %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+            {% endfor %}
+        </p>
+        <p>{{ form.spotPrice.label }}: {{ form.spotPrice(size=10) }}</p>
+
+        <p>{{ form.strikePrice.label }}: {{ form.strikePrice(size=10) }}</p>
+
+        <p>{{ form.timeDays.label }}: {{ form.timeDays(size=10) }}</p>
+
+        <p>{{ form.rate.label }}: {{ form.rate(size=10) }}</p>
+
+        <p>{{ form.dividendYeld.label }}: {{ form.dividendYeld(size=10) }}</p>
+        <br><br>
+
+        <p>
+            Target Action:
+            {% for subfield in form.target %}
+                <br>
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+            {% endfor %}
+
+        </p>
+        <p>{{ form.volatility.label }}: {{ form.volatility(size=10) }}</p>
+
+        <p>{{ form.price.label }}: {{ form.price(size=10) }}</p>
+
+        <p><input type="submit" value="Calculate"></p>
+    </form>
+{% endblock %}
