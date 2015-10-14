@@ -131,6 +131,8 @@ def hi():
         result = render_template_string(template, title='FE535 - Homework 2', form=form)
     except:
         result = 'Hi!'
+        import wtforms
+        result=wtforms.__version__
     return result
 
 
