@@ -1,7 +1,6 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, request
 from wtforms import RadioField, Form, FloatField, IntegerField, validators
 from BlackFormula import Option
-# from flask.ext.wtf import Form
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
