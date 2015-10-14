@@ -29,10 +29,10 @@ class Calculator(Form):
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
 
-@application.route('/', methods=['GET', 'POST'])
 def hi():
     return 'Hi!'
 
+@application.route('/', methods=['GET', 'POST'])
 @application.route('/volatility', methods=['GET', 'POST'])
 @application.route('/blackformula', methods=['GET', 'POST'])
 def calculator():
