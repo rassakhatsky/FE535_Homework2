@@ -1,5 +1,5 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField ,Form
+from wtforms import RadioField ,Form, FloatField
 
 #from flask.ext.wtf import Form
 application = Flask(__name__)
@@ -101,6 +101,8 @@ template = '''
     }
 </script>'''
 
+class Company(Form):
+    strikePrice = FloatField('Company Name', [validators.Length(min=3, max = 60)])
 
 class Calculator(Form):
     optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], default='put')
@@ -130,8 +132,8 @@ def hi():
         result = render_template_string(template, title='FE535 - Homework 2', form=form)
     except:
         result = 'Hi!'
-        import wtforms
-        result=wtforms.__version__
+        form = Company()
+        result=render_template_string(template, title='FE535 - Homework 2', form=form)
     return result
 
 
