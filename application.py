@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, flash
 from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
+
 from  BlackFormula import Option
 
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
-
 
 
 class Calculator(Form):
@@ -149,6 +149,6 @@ def calculator():
 
 
 if __name__ == '__main__':
-    application.debug = False
+    application.debug = True
     application.secret_key = SECRET_KEY
     application.run()
