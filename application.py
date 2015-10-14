@@ -1,6 +1,5 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField, FloatField, IntegerField, Form
-from wtforms.validators import DataRequired
+from wtforms import RadioField, Form
 
 application = Flask(__name__)
 
@@ -103,8 +102,7 @@ template = '''
 
 
 class Calculator(Form):
-    optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], validators=[DataRequired()],
-                            default='put')
+    optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], default='put')
     '''
     daysYear = RadioField('Days in Year', choices=[(365, 365), (360, 360), (252, 252)], default=360,
                           validators=[DataRequired()])
@@ -123,13 +121,14 @@ class Calculator(Form):
     price = FloatField('Option Price, $')
 '''
 
+
 @application.route('/', methods=['GET', 'POST'])
 def hi():
     try:
         form = Calculator()
         result = render_template_string(template, title='FE535 - Homework 2', form=form)
     except:
-        result='Hi!'
+        result = 'Hi!'
     return result
 
 
