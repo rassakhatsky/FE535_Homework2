@@ -82,6 +82,7 @@ packages:
     gcc-c++: []
     gcc-gfortran: []
     python-devel: []
+    python-scipy: []
     atlas-sse3-devel: []
     lapack-devel: []
     libpng-devel: []
