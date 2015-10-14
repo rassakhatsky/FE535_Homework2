@@ -150,5 +150,5 @@ def calculator():
 
 
 if __name__ == '__main__':
-    application.debug = True
-    application.run()
+    application.debug = False
+    application.run(port=10080)
