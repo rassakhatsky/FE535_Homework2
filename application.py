@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, request
+from flask import Flask, render_template_string, request, flash
 from wtforms import RadioField, Form, FloatField, IntegerField, validators
 from BlackFormula import Option
 application = Flask(__name__)
