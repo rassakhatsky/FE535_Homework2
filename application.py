@@ -105,6 +105,7 @@ template = '''
 class Calculator(Form):
     optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], validators=[DataRequired()],
                             default='put')
+    '''
     daysYear = RadioField('Days in Year', choices=[(365, 365), (360, 360), (252, 252)], default=360,
                           validators=[DataRequired()])
 
@@ -120,7 +121,7 @@ class Calculator(Form):
 
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
-
+'''
 
 @application.route('/', methods=['GET', 'POST'])
 def hi():
