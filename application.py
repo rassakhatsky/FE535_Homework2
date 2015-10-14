@@ -128,8 +128,8 @@ def hi():
     return template
 
 @application.route('/', methods=['GET', 'POST'])
-#@application.route('/volatility', methods=['GET', 'POST'])
-#@application.route('/blackformula', methods=['GET', 'POST'])
+@application.route('/volatility', methods=['GET', 'POST'])
+@application.route('/blackformula', methods=['GET', 'POST'])
 def calculator():
     form = Calculator()
     if str(request.url_rule) == '/blackformula':
