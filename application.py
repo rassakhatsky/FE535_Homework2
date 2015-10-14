@@ -8,7 +8,6 @@ application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
 
-application.secret_key = SECRET_KEY
 
 
 class Calculator(Form):
@@ -151,4 +150,5 @@ def calculator():
 
 if __name__ == '__main__':
     application.debug = False
+    application.secret_key = SECRET_KEY
     application.run()
