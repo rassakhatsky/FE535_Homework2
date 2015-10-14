@@ -1,6 +1,6 @@
-#import math  # Calculation choice
-#import numpy as np
-#from scipy.stats import norm
+import math  # Calculation choice
+import numpy as np
+from scipy.stats import norm
 
 
 class Option():
