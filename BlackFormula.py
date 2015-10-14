@@ -24,16 +24,16 @@ class Option():
     def calculatePrice(self):
         if self.option == 'call':
             price = float(
-                ((scipy.stats.norm(0, 1).cdf(self.d1)) * (
+                ((norm(0, 1).cdf(self.d1)) * (
                     self.spotP * math.exp((-self.div) * (self.time / self.daysYear)))) - (
-                    scipy.stats.norm(0, 1).cdf(self.d2)) * self.strikeP * math.exp(
+                    norm(0, 1).cdf(self.d2)) * self.strikeP * math.exp(
                     (-self.rate) * (self.time / self.daysYear)))
             # print(float(round(price, 3)))
         else:  # it's put
             price = float(
-                ((1 - (scipy.stats.norm(0, 1).cdf(self.d1))) * (
+                ((1 - (norm(0, 1).cdf(self.d1))) * (
                     -self.spotP * math.exp((-self.div) * (self.time / self.daysYear)))) + (
-                    1 - (scipy.stats.norm(0, 1).cdf(self.d2))) * self.strikeP * (
+                    1 - (norm(0, 1).cdf(self.d2))) * self.strikeP * (
                     math.exp((-self.rate) * (self.time / self.daysYear))))
             # print(float(round(price, 3)))
         return float(round(price, 3))
@@ -51,15 +51,14 @@ class Option():
             self.factors()
         return float(round(self.vol * 100, 4))
 
-
-        # put = Option(option='put', spotPrice=1314.49, strikePrice=1314.49, timeDays=180, rate=0.78525 / 100.0,
-        #              dividendYeld=2.211 / 100.0, volatility=20.252 / 100.0)
-        # put.calculatePrice()
-        #
-        # call = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
-        #              dividendYeld=2.886 / 100.0, volatility=16.252 / 100.0)
-        # call.calculatePrice()
-        #
-        # vol  = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
-        #              dividendYeld=2.886 / 100.0, volatility=200 / 100.0)
-        # vol.imp_vol(23.47)
+# put = Option(option='put', spotPrice=1314.49, strikePrice=1314.49, timeDays=180, rate=0.78525 / 100.0,
+#              dividendYeld=2.211 / 100.0, volatility=20.252 / 100.0)
+# put.calculatePrice()
+#
+# call = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
+#              dividendYeld=2.886 / 100.0, volatility=16.252 / 100.0)
+# call.calculatePrice()
+#
+# vol  = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
+#              dividendYeld=2.886 / 100.0, volatility=200 / 100.0)
+# vol.imp_vol(23.47)

@@ -137,19 +137,6 @@ def calculator():
     return render_template('calculator.html', title='FE535 - Homework 2', form=form)
 
 
-# put = Option(option='put', spotPrice=1314.49, strikePrice=1314.49, timeDays=180, rate=0.78525 / 100.0,
-#              dividendYeld=2.211 / 100.0, volatility=20.252 / 100.0)
-# put.calculatePrice()
-#
-# call = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
-#              dividendYeld=2.886 / 100.0, volatility=16.252 / 100.0)
-# call.calculatePrice()
-#
-# vol  = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
-#              dividendYeld=2.886 / 100.0, volatility=200 / 100.0)
-# vol.imp_vol(23.47)
-
-
 if __name__ == '__main__':
     application.debug = False
     application.secret_key = SECRET_KEY
