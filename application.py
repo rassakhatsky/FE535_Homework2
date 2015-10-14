@@ -2,7 +2,7 @@ from flask import Flask, render_template_string, request, flash
 from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
-from  BlackFormula import Option
+#from  BlackFormula import Option
 
 application = Flask(__name__)
 
@@ -209,9 +209,9 @@ def calculator():
         target = form.target.data
 
         if not volatility is None and target == 'price':  # calc price
-            option = Option(option=optionType, spotPrice=spotPrice, strikePrice=strikePrice, timeDays=timeDays,
-                            rate=rate / 100.0, dividendYeld=dividendYeld / 100.0, volatility=volatility / 100.0,
-                            daysYear=daysYear)
+            #option = Option(option=optionType, spotPrice=spotPrice, strikePrice=strikePrice, timeDays=timeDays,
+            #                rate=rate / 100.0, dividendYeld=dividendYeld / 100.0, volatility=volatility / 100.0,
+            #                daysYear=daysYear)
             price = option.calculatePrice()
 
             form.price.data = price
@@ -219,9 +219,9 @@ def calculator():
             form.price.raw_data = [str(price)]
 
         elif not price is None and target == 'volatility':  # calc vol
-            option = Option(option=optionType, spotPrice=spotPrice, strikePrice=strikePrice, timeDays=timeDays,
-                            rate=rate / 100.0, dividendYeld=dividendYeld / 100.0, volatility=200 / 100.0,
-                            daysYear=daysYear)
+            #option = Option(option=optionType, spotPrice=spotPrice, strikePrice=strikePrice, timeDays=timeDays,
+            #                rate=rate / 100.0, dividendYeld=dividendYeld / 100.0, volatility=200 / 100.0,
+            #                daysYear=daysYear)
             volatility = option.imp_vol(price)
 
             form.volatility.data = volatility
