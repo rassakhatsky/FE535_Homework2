@@ -2,7 +2,7 @@ from flask import Flask, render_template_string, request, flash
 from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
-from  BlackFormula import Option
+#from  BlackFormula import Option
 
 application = Flask(__name__)
 
@@ -127,7 +127,7 @@ class Calculator(Form):
 def hi():
     form = Calculator()
     return render_template_string(template, title='FE535 - Homework 2', form=form)
-
+'''
 @application.route('/', methods=['GET', 'POST'])
 @application.route('/volatility', methods=['GET', 'POST'])
 @application.route('/blackformula', methods=['GET', 'POST'])
@@ -232,7 +232,7 @@ def calculator():
             flash('Volatility or Option Price has to be set')
     return render_template_string(template, title='FE535 - Homework 2', form=form)
 
-
+'''
 if __name__ == '__main__':
     application.debug = False
     application.secret_key = SECRET_KEY
