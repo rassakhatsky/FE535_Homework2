@@ -125,8 +125,8 @@ class Calculator(Form):
 
 @application.route('/', methods=['GET', 'POST'])
 def hi():
-    form = Calculator()
     try:
+        form = Calculator()
         result = render_template_string(template, title='FE535 - Homework 2', form=form)
     except:
         result='Hi!'
