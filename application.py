@@ -1,7 +1,7 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField ,Form, FloatField
+from wtforms import RadioField, Form, FloatField, IntegerField, validators
 
-#from flask.ext.wtf import Form
+# from flask.ext.wtf import Form
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
@@ -42,7 +42,6 @@ template = '''
 <h1>Implied volatility calculator</h1>
 
 <form action="" method="post" name="calculator">
-    {{ form.hidden_tag() }}
     <p>
         Days in Year:
         {% for subfield in form.daysYear %}
@@ -101,43 +100,35 @@ template = '''
     }
 </script>'''
 
+
 class Company(Form):
-    strikePrice = FloatField('Company Name', [validators.Length(min=3, max = 60)])
+    strikePrice = FloatField('Company Name', [validators.Length(min=3, max=60)])
+
 
 class Calculator(Form):
     optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], default='put')
-    '''
-    daysYear = RadioField('Days in Year', choices=[(365, 365), (360, 360), (252, 252)], default=360,
-                          validators=[DataRequired()])
+    daysYear = RadioField('Days in Year', choices=[(365, 365), (360, 360), (252, 252)], default=360)
 
-    spotPrice = FloatField('Spot Price, $', validators=[DataRequired()], default=1000.0)
-    strikePrice = FloatField('Strike Price, $', validators=[DataRequired()], default=1000.0)
-    timeDays = IntegerField('Maturity, days', validators=[DataRequired()], default=30)
-    rate = FloatField('Rate, %', validators=[DataRequired()], default=0.0)
-    dividendYeld = FloatField('Dividend Yeld, %', validators=[DataRequired()], default=0.0)
+    spotPrice = FloatField('Spot Price, $', default=1000.0)
+    strikePrice = FloatField('Strike Price, $', default=1000.0)
+    timeDays = IntegerField('Maturity, days', default=30)
+    rate = FloatField('Rate, %', default=0.0)
+    dividendYeld = FloatField('Dividend Yeld, %', default=0.0)
 
     target = RadioField('Target action',
                         choices=[('volatility', 'Calculate Volatility, %'), ('price', 'Calculate Option Price, $')],
-                        validators=[DataRequired()], default='price')
+                        default='price')
 
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
-'''
 
 
 @application.route('/', methods=['GET', 'POST'])
 def hi():
-    try:
-        form = Calculator()
-        result = render_template_string(template, title='FE535 - Homework 2', form=form)
-    except:
-        result = 'Hi!'
-        form = Company()
-        result=render_template_string(template, title='FE535 - Homework 2', form=form)
-    return result
-
+    form = Calculator()
+    return render_template_string(template, title='FE535 - Homework 2', form=form)
 
 if __name__ == '__main__':
-    application.debug = False
+    application.debug = True
     application.secret_key = SECRET_KEY
     application.run()
