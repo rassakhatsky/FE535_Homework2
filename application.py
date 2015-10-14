@@ -1,8 +1,7 @@
-from flask import Flask, render_template_string, request, flash
+from flask import Flask, render_template_string
 from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
-from  BlackFormula import Option
 
 application = Flask(__name__)
 
@@ -123,10 +122,12 @@ class Calculator(Form):
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
 
+
 @application.route('/', methods=['GET', 'POST'])
 def hi():
     form = Calculator()
     return render_template_string(template, title='FE535 - Homework 2', form=form)
+
 
 if __name__ == '__main__':
     application.debug = False
