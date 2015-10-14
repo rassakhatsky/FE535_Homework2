@@ -3,7 +3,7 @@ from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
 
-from  BlackFormula import Option
+#from  BlackFormula import Option
 
 application = Flask(__name__)
 
