@@ -1,6 +1,8 @@
 from flask import Flask, render_template_string, request, flash
-from wtforms import RadioField, Form, FloatField, IntegerField, validators
+from wtforms import RadioField, Form, FloatField, IntegerField
+
 from BlackFormula import Option
+
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
@@ -100,10 +102,6 @@ template = '''
 </script>'''
 
 
-class Company(Form):
-    strikePrice = FloatField('Company Name', [validators.Length(min=3, max=60)])
-
-
 class Calculator(Form):
     optionType = RadioField('Option Type', choices=[('put', 'Put'), ('call', 'Call')], default='put')
     daysYear = RadioField('Days in Year', choices=[(365, 365), (360, 360), (252, 252)], default=360)
@@ -121,11 +119,6 @@ class Calculator(Form):
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
 
-
-@application.route('/hi', methods=['GET', 'POST'])
-def hi():
-    form = Calculator()
-    return render_template_string(template, title='FE535 - Homework 2', form=form)
 
 @application.route('/', methods=['GET', 'POST'])
 @application.route('/volatility', methods=['GET', 'POST'])
@@ -228,7 +221,10 @@ def calculator():
             form.volatility.object_data = volatility
             form.volatility.raw_data = [str(volatility)]
         else:
-            flash('Volatility or Option Price has to be set')
+            try:
+                flash('Volatility or Option Price has to be set')
+            except:
+                pass
     return render_template_string(template, title='FE535 - Homework 2', form=form)
 
 
