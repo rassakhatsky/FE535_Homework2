@@ -125,7 +125,8 @@ class Calculator(Form):
 
 @application.route('/hi', methods=['GET', 'POST'])
 def hi():
-    return template
+    form = Calculator()
+    return render_template_string(template, title='FE535 - Homework 2', form=form)
 
 @application.route('/', methods=['GET', 'POST'])
 @application.route('/volatility', methods=['GET', 'POST'])
