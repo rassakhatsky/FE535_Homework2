@@ -1,7 +1,6 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField, FloatField, IntegerField
+from wtforms import RadioField, FloatField, IntegerField, Form
 from wtforms.validators import DataRequired
-from flask.ext.wtf import Form
 
 application = Flask(__name__)
 
