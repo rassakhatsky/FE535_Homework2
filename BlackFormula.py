@@ -1,11 +1,12 @@
-import scipy.stats
-from scipy.stats import norm
-import numpy as np
 
-import math  # Calculation choice
+
 
 class Option():
     def __init__(self, option, spotPrice, strikePrice, timeDays, rate, dividendYeld, volatility=4, daysYear=360):
+        import math  # Calculation choice
+        import scipy.stats as stats
+        from scipy.stats import norm
+        import numpy as np
         self.option = option
         self.spotP = float(spotPrice)
         self.strikeP = float(strikePrice)
@@ -63,29 +64,3 @@ class Option():
 # vol  = Option(option='call', spotPrice=1314.25, strikePrice=1314.25, timeDays=30, rate=0.261 / 100.0,
 #              dividendYeld=2.886 / 100.0, volatility=200 / 100.0)
 # vol.imp_vol(23.47)
-
-
-'''
-Flask==0.10.1
-Flask-WTF==0.12
-itsdangerous==0.24
-Jinja2==2.8
-MarkupSafe==0.23
-scipy==0.16.0
-Werkzeug==0.10.4
-WTForms==2.0.2
-'''
-
-'''
-packages:
-  yum:
-    gcc-c++: []
-    gcc-gfortran: []
-    python-devel: []
-    python-scipy: []
-    atlas-sse3-devel: []
-    lapack-devel: []
-    libpng-devel: []
-    freetype-devel: []
-    zlib-devel: []
-    '''
