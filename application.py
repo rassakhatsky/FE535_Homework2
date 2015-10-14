@@ -1,6 +1,6 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField, Form
-
+from wtforms import RadioField
+from flask_wtf import Form
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
