@@ -1,6 +1,5 @@
 from flask import Flask, render_template_string
-from wtforms import RadioField #, Form
-from flask_wtf import Form
+from wtforms import RadioField ,Form
 
 #from flask.ext.wtf import Form
 application = Flask(__name__)
