@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, flash
 from wtforms import RadioField, FloatField, IntegerField
 from wtforms.validators import DataRequired
 from flask.ext.wtf import Form
-
-#from  BlackFormula import Option
+from  BlackFormula import Option
 
 application = Flask(__name__)
 
 SECRET_KEY = 'blablbablablbalablbasecretkeyissosecret'
+
 
 
 class Calculator(Form):
@@ -29,10 +29,12 @@ class Calculator(Form):
     volatility = FloatField('Volatility, %')
     price = FloatField('Option Price, $')
 
+@application.route('/', methods=['GET', 'POST'])
+def hi():
+    return 'Hi!'
 
 @application.route('/volatility', methods=['GET', 'POST'])
 @application.route('/blackformula', methods=['GET', 'POST'])
-@application.route('/', methods=['GET', 'POST'])
 def calculator():
     form = Calculator()
     if str(request.url_rule) == '/blackformula':
@@ -149,6 +151,6 @@ def calculator():
 
 
 if __name__ == '__main__':
-    application.debug = True
+    application.debug = False
     application.secret_key = SECRET_KEY
     application.run()
